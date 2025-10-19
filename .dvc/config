@@ -1,0 +1,5 @@
+[core]
+    remote = s3-origin
+['remote "s3-origin"']
+    url = s3://dvc
+    endpointurl = http://cloudnative.space:9000

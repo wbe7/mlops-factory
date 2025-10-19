@@ -1,6 +1,6 @@
 stages:
   train:
-    cmd: ./.venv/bin/python train.py
+    cmd: python train.py
     deps:
       - train.py
       - data/dataset.csv
