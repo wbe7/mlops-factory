@@ -34,3 +34,9 @@ jobs:
 
       - name: Run DVC pipeline
         run: dvc repro
+
+      - name: Commit dvc.lock
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(ci): Update dvc.lock"
+          file_pattern: dvc.lock
