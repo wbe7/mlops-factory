@@ -9,11 +9,11 @@ stages:
       size: 223
     - path: train.py
       hash: md5
-      md5: 64b031b64f3c196c24b70e6b758d0e14
+      md5: 0e14704204fa75bfc345c96bd5d87bda
       size: 1791
     outs:
     - path: mlruns
       hash: md5
-      md5: 3725bade30d1547782299805e0b0ba5f.dir
-      size: 62692
+      md5: 0c0bb881702b81878ac574488b0d6e35.dir
+      size: 48035
       nfiles: 22

@@ -16,7 +16,7 @@ y = data['PRICE']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Определяем параметр для обучения
-n_estimators = 200
+n_estimators = 150
 
 # --- 2. Обучение и логирование с MLflow ---
 # mlflow.start_run() создает новый "эксперимент" (run)
