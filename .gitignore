@@ -7,6 +7,7 @@ __pycache__/
 
 # ML artifacts
 model.pkl
+mlruns/
 
 # Virtual environment
 .venv/
