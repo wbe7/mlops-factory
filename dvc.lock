@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: ./.venv/bin/python train.py
+    deps:
+    - path: data/dataset.csv
+      hash: md5
+      md5: 3a95f2c9caf9204212f410122d4367b6
+      size: 223
+    - path: train.py
+      hash: md5
+      md5: 64b031b64f3c196c24b70e6b758d0e14
+      size: 1791
+    outs:
+    - path: mlruns
+      hash: md5
+      md5: 3725bade30d1547782299805e0b0ba5f.dir
+      size: 62692
+      nfiles: 22
