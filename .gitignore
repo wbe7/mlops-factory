@@ -1,0 +1,12 @@
+GEMINI.md
+PROMPT.md
+
+# Python cache
+__pycache__/
+*.pyc
+
+# ML artifacts
+model.pkl
+
+# Virtual environment
+.venv/
