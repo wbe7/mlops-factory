@@ -1,12 +1,12 @@
 schema: '2.0'
 stages:
   train:
-    cmd: ./.venv/bin/python train.py
+    cmd: python train.py
     deps:
     - path: data/dataset.csv
       hash: md5
-      md5: 3a95f2c9caf9204212f410122d4367b6
-      size: 223
+      md5: 939d6ee6bf081b83dc14f5c46527f208
+      size: 1895148
     - path: train.py
       hash: md5
       md5: 0e14704204fa75bfc345c96bd5d87bda
@@ -14,6 +14,6 @@ stages:
     outs:
     - path: mlruns
       hash: md5
-      md5: 0c0bb881702b81878ac574488b0d6e35.dir
-      size: 48035
+      md5: 2f5af4b10c93f24d2ad321ea3d95751f.dir
+      size: 217113576
       nfiles: 22
