@@ -12,3 +12,6 @@ mlruns/
 # Virtual environment
 .venv/
 /mlruns
+
+# Helm charts with sensitive values
+/helm/
