@@ -1,5 +1,5 @@
 [core]
     remote = s3-origin
 ['remote "s3-origin"']
-    url = s3://dvc
+    url = s3://dvc/mlops-factory
     endpointurl = http://cloudnative.space:9000
