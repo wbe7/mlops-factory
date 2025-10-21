@@ -1,0 +1,55 @@
+# Top-level image definition, used by tracking and its init containers
+image:
+  repository: bitnamilegacy/mlflow
+
+# Main application settings are under 'tracking'
+tracking:
+  # Ingress Configuration
+  ingress:
+    enabled: true
+    pathType: ImplementationSpecific
+    hostname: mlflow.cloudnative.space
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt"
+    tls: true
+
+  # Basic Authentication for the UI
+  auth:
+    enabled: true
+
+# Disable the bundled MinIO since we use an external S3
+minio:
+  enabled: false
+
+# Configure the external S3 artifact store
+externalS3:
+  host: "192.168.77.7"
+  port: 9000
+  protocol: "http"
+  bucket: "mlflow"
+  useCredentialsInSecret: true
+  existingSecret: "mlflow-s3-creds"
+  existingSecretAccessKeyIDKey: "AWS_ACCESS_KEY_ID"
+  existingSecretKeySecretKey: "AWS_SECRET_ACCESS_KEY"
+
+# Enable and configure the bundled PostgreSQL
+postgresql:
+  enabled: true
+  image:
+    repository: bitnamilegacy/postgresql
+  auth:
+    database: "mlflow_db"
+  primary:
+    persistence:
+      enabled: true
+      storageClass: "freenas-nfs-csi"
+      size: 8Gi
+
+# Use bitnamilegacy images for init containers
+volumePermissions:
+  image:
+    repository: bitnamilegacy/os-shell
+
+waitContainer:
+  image:
+    repository: bitnamilegacy/os-shell

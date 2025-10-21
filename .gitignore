@@ -14,4 +14,3 @@ mlruns/
 /mlruns
 
 # Helm charts with sensitive values
-/helm/
