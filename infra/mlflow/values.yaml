@@ -12,6 +12,7 @@ tracking:
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt"
       nginx.ingress.kubernetes.io/proxy-body-size: "10g"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     tls: true
 
   # Basic Authentication for the UI
