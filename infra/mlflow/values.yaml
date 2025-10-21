@@ -19,6 +19,9 @@ tracking:
   auth:
     enabled: true
 
+  extraArgs:
+    - --gunicorn-opts='--timeout=600'
+
 # Disable the bundled MinIO since we use an external S3
 minio:
   enabled: false
