@@ -4,6 +4,10 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
 from contextlib import asynccontextmanager
+from dotenv import load_dotenv
+
+# Загружаем переменные окружения из .env файла
+load_dotenv()
 
 # --- 1. Определение формата входных данных ---
 class HouseFeatures(BaseModel):
@@ -24,19 +28,17 @@ model_registry = {}
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # --- Код при старте ---
-    # Загружаем модель из MLflow Model Registry.
-    # Имя модели и стадия (Prod, Staging) берутся из переменных окружения.
-    # Это позволяет менять модели без изменения кода.
+    # Загружаем модель из MLflow Model Registry, используя алиас.
+    # Имя модели и алиас (prod, champion, etc) берутся из переменных окружения.
     model_name = os.getenv("MODEL_NAME", "california-housing-model")
-    model_stage = os.getenv("MODEL_STAGE", "Production")
+    model_alias = os.getenv("MODEL_ALIAS", "prod")
     
     # Устанавливаем URI для подключения к MLflow.
-    # В Docker-контейнере это будет внутренний адрес сервиса MLflow.
     mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
 
-    print(f"Loading model '{model_name}' stage '{model_stage}'...")
+    print(f"Loading model '{model_name}' with alias '{model_alias}'...")
     model_registry["model"] = mlflow.pyfunc.load_model(
-        model_uri=f"models:/{model_name}/{model_stage}"
+        model_uri=f"models:/{model_name}@{model_alias}"
     )
     print("Model loaded successfully.")
     

@@ -1,9 +1,13 @@
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
 import mlflow
 import mlflow.sklearn
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+from dotenv import load_dotenv
+
+# Загружаем переменные окружения из .env файла
+load_dotenv()
 
 # --- 1. Загрузка и подготовка данных ---
 # Загружаем данные из нашего CSV, который версионируется с помощью DVC
@@ -36,8 +40,14 @@ with mlflow.start_run():
     # Логируем метрику качества
     mlflow.log_metric("mse", mse)
 
-    # Логируем (сохраняем) саму модель
-    mlflow.sklearn.log_model(model, "random-forest-model")
+    # Логируем (сохраняем) и регистрируем саму модель, добавляя пример входа
+    # для автоматического определения сигнатуры модели.
+    mlflow.sklearn.log_model(
+        sk_model=model, 
+        name="random-forest-model",
+        registered_model_name="california-housing-model",
+        input_example=X_train.head(5)
+    )
 
     print(f"Модель обучена. MSE: {mse}")
     print("Модель, параметры и метрики залогированы с помощью MLflow.")

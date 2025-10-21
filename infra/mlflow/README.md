@@ -78,11 +78,11 @@ waitContainer:
 
 - **Username:**
   ```bash
-  kubectl get secret --namespace mlflow mlflow-tracking -o jsonpath="{.data.username}" | base64 -d
+  kubectl get secret --namespace mlflow mlflow-tracking -o jsonpath="{.data.admin-user}" | base64 -d
   ```
 - **Password:**
   ```bash
-  kubectl get secret --namespace mlflow mlflow-tracking -o jsonpath="{.data.password}" | base64 -d
+  kubectl get secret --namespace mlflow mlflow-tracking -o jsonpath="{.data.admin-password}" | base64 -d
   ```
 
 ### Анализ конфигурации

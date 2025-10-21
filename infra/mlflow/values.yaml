@@ -11,6 +11,7 @@ tracking:
     hostname: mlflow.cloudnative.space
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt"
+      nginx.ingress.kubernetes.io/proxy-body-size: "10g"
     tls: true
 
   # Basic Authentication for the UI

@@ -4,5 +4,3 @@ stages:
     deps:
       - train.py
       - data/dataset.csv
-    outs:
-      - mlruns

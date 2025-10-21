@@ -1,5 +1,6 @@
 GEMINI.md
 PROMPT.md
+.env
 
 # Python cache
 __pycache__/
@@ -13,4 +14,4 @@ mlruns/
 .venv/
 /mlruns
 
-# Helm charts with sensitive values
+# Helm charts with sensitive values.env
