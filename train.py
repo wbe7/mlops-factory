@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 import mlflow
 import mlflow.sklearn
 from sklearn.model_selection import train_test_split
@@ -34,6 +35,10 @@ with mlflow.start_run():
     mse = mean_squared_error(y_test, predictions)
 
     # --- Логирование в MLflow ---
+    # Определяем и логируем источник запуска (CI или локальный)
+    training_source = "github_actions" if os.getenv("CI") else "local"
+    mlflow.set_tag("training_source", training_source)
+
     # Логируем параметр, который мы использовали
     mlflow.log_param("n_estimators", n_estimators)
 
