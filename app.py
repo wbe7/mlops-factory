@@ -54,7 +54,13 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="MLOps Factory Prediction Service", lifespan=lifespan)
 
 
-# --- 4. Создание эндпоинта для предсказания ---
+# --- 4. Эндпоинт для проверки здоровья (Health Check) ---
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+
+# --- 5. Создание эндпоинта для предсказания ---
 @app.post("/predict")
 def predict(features: HouseFeatures):
     """
